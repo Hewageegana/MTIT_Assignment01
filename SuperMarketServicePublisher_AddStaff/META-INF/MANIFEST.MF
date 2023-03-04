@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SuperMarketServicePublisher_AddStaff
+Bundle-SymbolicName: SuperMarketServicePublisher_AddStaff
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: supermarketservicepublisher_addstaff.Activator
+Bundle-Vendor: Assignment01
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: SuperMarketServicePublisher.AddStaff
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: supermarketservicepublisher_addstaff
