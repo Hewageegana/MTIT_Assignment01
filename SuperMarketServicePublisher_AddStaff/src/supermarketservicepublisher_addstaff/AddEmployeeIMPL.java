@@ -71,14 +71,22 @@ public class AddEmployeeIMPL implements AddEmployeeService{
 
 					if (eployeeList.size() > 0) {
 						System.out.println();
+						System.out.println(" Employee Successfully Registered to the system!");
+						System.out.println("-----------------------------------------------");
+						System.out.println();
 						System.out.println("\t\t\t\t---------------- Employee List ------------------- ");
 						System.out.println();
+						System.out.println("------------------- ------------------- ------------------- ------------------- ------------------- ------------------- ");
+						System.out.println("Employee ID \t  First Name \t  Last Name \t Address \t NIC \t\t DOB \t\t Age  \t\t Salary ");
+						System.out.println("------------------- ------------------- ------------------- ------------------- ------------------- ------------------- ");
+						System.out.println();
+						
 						for (Employee emp : eployeeList) {
-							System.out.println("Employee ID \t  First Name \t  Last Name \t Address \t NIC \t\t DOB \t\t Age  \t\t Salary ");
-							System.out.println();
+							
+							
 							System.out.println(emp.getEmpID() + "\t\t  " +  emp.getEmpFirstName() + "\t  " + emp.getEmpLastName()  + "\t " +emp.getEmpAddress()+ "\t " +emp.getEmpNIC()+ "\t " + emp.getEmpDOB()+ "\t " + String.valueOf(emp.getAge())+ "\t\t" + String.valueOf(emp.getSalary()));
 							System.out.println();
-							System.out.println();
+							
 //							System.out.println("  Employee ID : " + emp.getEmpID());
 //							System.out.println("  Employee First Name : " + emp.getEmpFirstName());
 //							System.out.println("  Employee Last Name : " + emp.getEmpLastName());
@@ -89,10 +97,6 @@ public class AddEmployeeIMPL implements AddEmployeeService{
 //							System.out.println("  Age :      " + String.valueOf(emp.getAge()));
 							
 							
-							
-							System.out.println("  Successfully Added!");
-							System.out.println("-----------------------------------------------");
-							System.out.println();
 						}
 					} else {
 						System.out.println();

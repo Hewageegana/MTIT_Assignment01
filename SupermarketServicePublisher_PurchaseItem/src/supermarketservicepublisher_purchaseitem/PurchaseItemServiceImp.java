@@ -21,11 +21,17 @@ public class PurchaseItemServiceImp implements PurchaseItemService {
 		boolean inValid = true;
 		boolean secondInValid = true;
 		
-		HashMap<String, Item> booksMap = new HashMap<String, Item>();
-		booksMap.put("AP-200", new Item("Apple",150,"AP-200","Fresh Fruits", 100));
-		booksMap.put("OR-233", new Item("Orange",100,"OR-233","Fresh Fruits", 130));
-		booksMap.put("BS-222", new Item("Mari Biscut",80,"BS-222","Maliban", 30));
-		booksMap.put("SP-099", new Item("Soap",200,"SP-099","LUX", 40));
+		ArrayList<Item> item = new ArrayList<>();
+		HashMap<String, Item> ItemMap = new HashMap<String, Item>();
+		ItemMap.put("AP-200", new Item("Apple",150,"AP-200","Fresh Fruits", 100));
+		ItemMap.put("OR-233", new Item("Orange",100,"OR-233","Fresh Fruits", 130));
+		ItemMap.put("BS-222", new Item("Mari Biscut",80,"BS-222","Maliban", 30));
+		ItemMap.put("SP-099", new Item("Soap",200,"SP-099","LUX", 40));
+		
+//		item.add(new Item("Apple",150,"AP-200","Fresh Fruits", 100));
+//		item.add(new Item("Orange",100,"OR-233","Fresh Fruits", 130));
+//		item.add(new Item("Mari Biscut",80,"BS-222","Maliban", 30));
+//		item.add(new Item("Soap",200,"SP-099","LUX", 40));
 		
 		System.out.println();
 		System.out.println("-----------------Welcome To Supermarket----------------");
@@ -35,19 +41,30 @@ public class PurchaseItemServiceImp implements PurchaseItemService {
 		System.out.println();
 		
 		try {
+			System.out.println("-----------------Available Item List----------------");
+			for(HashMap.Entry<String, Item> itemlist: ItemMap.entrySet()) {
+				System.out.println("---------------------------------------------------");
+				System.out.println("  Item Name : " + itemlist.getValue().getName());
+				System.out.println("  Price :    " + String.valueOf(itemlist.getValue().getPrice()));
+				System.out.println("  Item Code :  " + itemlist.getValue().getItemCode());
+				System.out.println("  Item Brand :      " + itemlist.getValue().getBrand());
+				System.out.println("  Available Quantity :      " + String.valueOf(itemlist.getValue().getQuantity()));
+				System.out.println("-----------------------------------------------");
+			}
+			System.out.println("------------------------------------------------");
 			while(true) {
 				System.out.print("Enter Item Code: ");
 				search = in.readLine();
 				System.out.println();
-				if(search.length() > 0 && booksMap.containsKey(search)) {
-					if(booksMap.get(search).getQuantity() > 0) {
+				if(search.length() > 0 && ItemMap.containsKey(search)) {
+					if(ItemMap.get(search).getQuantity() > 0) {
 						System.out.print( "Item Available!");
 						System.out.println("---------------------------------------------------");
-						System.out.println("  Item Name : " + booksMap.get(search).getName());
-						System.out.println("  Price :    " + String.valueOf(booksMap.get(search).getPrice()));
-						System.out.println("  Item Code :  " + booksMap.get(search).getItemCode());
-						System.out.println("  Item Brand :      " + booksMap.get(search).getBrand());
-						System.out.println("  Available Quantity :      " + String.valueOf(booksMap.get(search).getQuantity()));
+						System.out.println("  Item Name : " + ItemMap.get(search).getName());
+						System.out.println("  Price :    " + String.valueOf(ItemMap.get(search).getPrice()));
+						System.out.println("  Item Code :  " + ItemMap.get(search).getItemCode());
+						System.out.println("  Item Brand :      " + ItemMap.get(search).getBrand());
+						System.out.println("  Available Quantity :      " + String.valueOf(ItemMap.get(search).getQuantity()));
 						System.out.println("-----------------------------------------------");
 		
 						while(inValid) {
@@ -65,8 +82,8 @@ public class PurchaseItemServiceImp implements PurchaseItemService {
 							
 						}
 						
-						while(quantity > booksMap.get(search).getQuantity()) {
-							System.out.println("Minimum Quantity Availble in stock is " + String.valueOf(booksMap.get(search).getQuantity()));
+						while(quantity > ItemMap.get(search).getQuantity()) {
+							System.out.println("Minimum Quantity Availble in stock is " + String.valueOf(ItemMap.get(search).getQuantity()));
 							secondInValid = true;
 							while(secondInValid) {
 								System.out.println();
@@ -84,11 +101,11 @@ public class PurchaseItemServiceImp implements PurchaseItemService {
 							}
 						}
 						
-						booksMap.get(search).setQuantity(booksMap.get(search).getQuantity() - quantity);
-						Item newArr = booksMap.get(search);
+						ItemMap.get(search).setQuantity(ItemMap.get(search).getQuantity() - quantity);
+						Item newArr = ItemMap.get(search);
 						newArr.setQuantity(quantity);
 						purchaseItems.add(newArr);
-						float purchaseAmount = booksMap.get(search).getPrice() * quantity;
+						float purchaseAmount = ItemMap.get(search).getPrice() * quantity;
 						totalAmount = totalAmount + purchaseAmount;
 						
 						System.out.println();
