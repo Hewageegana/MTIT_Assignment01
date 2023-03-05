@@ -1,4 +1,4 @@
-package supermarketservicesubscriber_addstaff;
+package supermarketservicesubscriber_purchaseitem;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-import supermarketservicepublisher_addstaff.AddEmployeeService;
+import supermarketservicepublisher_purchaseitem.PurchaseItemService;
 
 public class Activator implements BundleActivator {
 
@@ -19,6 +19,9 @@ public class Activator implements BundleActivator {
 	String memberPW = "1111";
 	String adminName = "admin";
 	String adminPW = "0000";
+	
+	boolean isInValidUser = true;
+	boolean isInvalidhoice = true;
 
 	static BundleContext getContext() {
 		return context;
@@ -26,8 +29,8 @@ public class Activator implements BundleActivator {
 
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
-		serviceReference = context.getServiceReference(AddEmployeeService.class.getName());
-		AddEmployeeService addEmp = (AddEmployeeService) context.getService(serviceReference);
+		serviceReference = bundleContext.getServiceReference(PurchaseItemService.class.getName());
+		PurchaseItemService purchaseItems = (PurchaseItemService) bundleContext.getService(serviceReference);
 		
 		System.out.println("Start Supermarket Service Subscriber");
 		System.out.println();
@@ -38,31 +41,34 @@ public class Activator implements BundleActivator {
 		System.out.println("                                                ");
 		System.out.println("================================================");
 		
-while(true) {
-	System.out.print("Enter Username: ");
-	String username = input.next();
-	System.out.print("Enter Password: ");
-	String password = input.next();
 
-		
-		
-		if (username.equals(adminName) && password.equals(adminPW)) {
-			System.out.println("============================================");
-			System.out.println("	          Admin Services	       ");
-			System.out.println("============================================");
+		while(isInValidUser) {
+			System.out.print("Enter Username: ");
+			String username = input.next();
+			System.out.print("Enter Password: ");
+			String password = input.next();
+			
+			if (username.equals(memberName) && password.equals(memberPW)) {
+				isInValidUser = false;
+			}else {
 
-			addEmp.addEmployee();
-
-		} else {
-
-			System.out.println("Incorrect Username Or Password!");
+				System.out.println("Incorrect Username Or Password!");
+			}	
 		}
+
+		System.out.println("============================================");
+		System.out.println("	          Member Services	       ");
+		System.out.println("	          Purchase Items           ");
+		System.out.println("============================================");
+		
+		purchaseItems.purchaseItem();
+		
 	}
-}
+
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
 		System.out.println("Stop Supermarket Service Consumer");
-		context.ungetService(serviceReference);
+		bundleContext.ungetService(serviceReference);
 	}
 
 }

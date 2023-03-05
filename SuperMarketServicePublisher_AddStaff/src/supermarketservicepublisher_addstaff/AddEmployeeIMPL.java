@@ -47,12 +47,13 @@ public class AddEmployeeIMPL implements AddEmployeeService{
 					Address = in.readLine();
 					System.out.print("Enter Employee NIC: ");
 					NIC = in.readLine();
-					System.out.println("Enter employee DOB: ");
+					System.out.print("Enter employee DOB: ");
 					DOB = in.readLine();
+					System.out.print("Enter employee age: ");
+					empage = Integer.valueOf(in.readLine());
 					System.out.println("Enter employee basic salary: ");
 					sal = Double.valueOf(in.readLine());
-					System.out.println("Enter employee age: ");
-					empage = Integer.valueOf(in.readLine());
+
 					System.out.println();
 					
 					if (FirstName.isEmpty() || LastName.isEmpty() || ID.isEmpty() || String.valueOf(sal).isEmpty() || String.valueOf(empage).isEmpty() || empage <= 20 || NIC.isEmpty() || Address.isEmpty() ) {
@@ -70,17 +71,22 @@ public class AddEmployeeIMPL implements AddEmployeeService{
 
 					if (eployeeList.size() > 0) {
 						System.out.println();
-						System.out.println("---------------- Employee List ------------------- ");
+						System.out.println("\t\t\t\t---------------- Employee List ------------------- ");
 						System.out.println();
 						for (Employee emp : eployeeList) {
-							System.out.println("  Employee ID : " + emp.empID);
-							System.out.println("  Employee First Name : " + emp.getEmpFirstName());
-							System.out.println("  Employee Last Name : " + emp.getEmpLastName());
-							System.out.println("  Address :  " + emp.getEmpAddress());
-							System.out.println("  NIC :      " + emp.getEmpNIC());
-							System.out.println("  DOB :      " + emp.getEmpDOB());
-							System.out.println("  Salary :    " + String.valueOf(emp.getSalary()));
-							System.out.println("  Age :      " + String.valueOf(emp.getAge()));
+							System.out.println("Employee ID \t  First Name \t  Last Name \t Address \t NIC \t\t DOB \t\t Age  \t\t Salary ");
+							System.out.println();
+							System.out.println(emp.getEmpID() + "\t\t  " +  emp.getEmpFirstName() + "\t  " + emp.getEmpLastName()  + "\t " +emp.getEmpAddress()+ "\t " +emp.getEmpNIC()+ "\t " + emp.getEmpDOB()+ "\t " + String.valueOf(emp.getAge())+ "\t\t" + String.valueOf(emp.getSalary()));
+							System.out.println();
+							System.out.println();
+//							System.out.println("  Employee ID : " + emp.getEmpID());
+//							System.out.println("  Employee First Name : " + emp.getEmpFirstName());
+//							System.out.println("  Employee Last Name : " + emp.getEmpLastName());
+//							System.out.println("  Address :  " + emp.getEmpAddress());
+//							System.out.println("  NIC :      " + emp.getEmpNIC());
+//							System.out.println("  DOB :      " + emp.getEmpDOB());
+//							System.out.println("  Salary :    " + String.valueOf(emp.getSalary()));
+//							System.out.println("  Age :      " + String.valueOf(emp.getAge()));
 							
 							
 							
