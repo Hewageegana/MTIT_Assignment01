@@ -14,7 +14,7 @@ public class SupermarketServiceSearchIMPL implements SupermarketServiceSearch{
 		
 		ArrayList<Items> items = new ArrayList<>();
 		
-		items.add(new Items("001","chocolate biscuit","munchee", 250, 470.0 ));
+		items.add(new Items("001","chocolate biscuit - 250g","munchee", 250, 470.0 ));
 		items.add(new Items("002","vanilla icecream","magic", 150, 2600.0 ));
 		items.add(new Items("003","vanilla icecream","magic", 120, 1300.0 ));
 		items.add(new Items("004","chocolate icecream","immorich",100, 2350.0 ));
@@ -23,8 +23,8 @@ public class SupermarketServiceSearchIMPL implements SupermarketServiceSearch{
 		items.add(new Items("007","chashew nut chocolate","kandos", 250, 470.0 ));
 		items.add(new Items("010","casava bites","rancrysp", 450, 300.0 ));
 		items.add(new Items("011","twist apple juice","elephant house", 350, 420.0 ));
-		items.add(new Items("012","chocolate biscuit ","munchee", 250, 470.0 ));
-		items.add(new Items("013","chocolate biscuit","munchee", 250, 470.0 ));
+		items.add(new Items("012","chocolate biscuit - 100g","munchee", 250, 470.0 ));
+		items.add(new Items("013","chocolate biscuit - 50g","munchee", 250, 470.0 ));
 		
 //		System.out.println();
 //		System.out.println("==========================================");
@@ -36,6 +36,15 @@ public class SupermarketServiceSearchIMPL implements SupermarketServiceSearch{
 //		System.out.println();
 
 	try {
+		System.out.println("Available Item List");
+		for(Items item : items) {
+			System.out.println("-------------------------------------");
+			System.out.println("Item Name :     " + item.getItemName());
+			System.out.println("Brand Name :   " + item.getBrandName());
+			System.out.println("Quantity :          " + item.getQuantity());
+			System.out.println("Price : " + item.getPrice());
+			System.out.println("-------------------------------------");
+		}
 		while(true) {
 			System.out.print("Enter Item Name or Brand Name: ");
 			itemname = in.readLine();

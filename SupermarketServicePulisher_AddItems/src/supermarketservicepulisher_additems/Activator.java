@@ -23,7 +23,7 @@ public class Activator implements BundleActivator {
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
 		publishServiceRegister.unregister();
-		System.out.println("Stop Supermarket Service Producer - Add Item");
+		System.out.println("Stop Supermarket Service Publisher - Add Item");
 	}
 
 }
