@@ -24,7 +24,7 @@ public class Activator implements BundleActivator {
 		serviceReference = context.getServiceReference(SupermarketServiceSearch.class.getName());
 		SupermarketServiceSearch searchitems = (SupermarketServiceSearch) context.getService(serviceReference);
 		
-		System.out.println("Start Supermarket Service Consumer - search");
+		System.out.println("Start Supermarket Service Consumer");
 		System.out.println();
 
 		System.out.println("================================================");
@@ -37,8 +37,8 @@ public class Activator implements BundleActivator {
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {
-		Activator.context = null;
-		System.out.println("Stop Super market Service Consumer - search");
+//		Activator.context = null;
+		System.out.println("Stop Super market Service Consumer");
 		context.ungetService(serviceReference);
 	}
 

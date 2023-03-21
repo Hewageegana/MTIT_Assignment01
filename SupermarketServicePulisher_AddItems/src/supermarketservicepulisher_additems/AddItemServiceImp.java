@@ -12,12 +12,14 @@ public class AddItemServiceImp implements AddItemService {
 	public void addItem() {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		String name;
-		float price;
+		float price = 0;
 		String itemCode;
 		String brand;
-		int quantity;
+		int quantity = 0;
 		String answer = " ";
 		ArrayList<Item> itemList = new ArrayList<>();
+		boolean validPrice = true;
+		boolean validQuantity = true;
 		
 		System.out.println();
 		System.out.println("Welcome To Online Supermarket - Admin");
@@ -36,14 +38,32 @@ public class AddItemServiceImp implements AddItemService {
 					System.out.println("---- Item Details ---- ");
 					System.out.print("Enter Item Name: ");
 					name = in.readLine();
-					System.out.print("Enter Price: ");
-					price = Float.valueOf(in.readLine());
+					while(validPrice) {
+						try {
+							System.out.print("Enter Price: ");
+							price = Float.valueOf(in.readLine());	
+							validPrice = false;
+						}
+						catch(NumberFormatException e) {
+							validPrice = true;
+							System.out.println("Invalid Price...");	
+						}	
+					}
 					System.out.print("Enter Item Code: ");
 					itemCode = in.readLine();
 					System.out.print("Enter Item Brand: ");
 					brand = in.readLine();
-					System.out.print("Enter Item Quantity: ");
-					quantity = Integer.valueOf(in.readLine());
+					while(validQuantity) {
+						try {
+							System.out.print("Enter Item Quantity: ");
+							quantity = Integer.valueOf(in.readLine());
+							validQuantity = false;
+						}
+						catch(NumberFormatException e) {
+							validQuantity = true;
+							System.out.println("Invalid Quantity...");	
+						}	
+					}
 					System.out.println();
 					
 					if (name.isEmpty() || itemCode.isEmpty() || brand.isEmpty() || String.valueOf(price).isEmpty() || String.valueOf(quantity).isEmpty() || price <= 0 || quantity <= 0) {

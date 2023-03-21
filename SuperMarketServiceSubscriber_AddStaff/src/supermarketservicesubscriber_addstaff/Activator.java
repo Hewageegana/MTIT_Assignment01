@@ -29,7 +29,7 @@ public class Activator implements BundleActivator {
 		serviceReference = context.getServiceReference(AddEmployeeService.class.getName());
 		AddEmployeeService addEmp = (AddEmployeeService) context.getService(serviceReference);
 		
-		System.out.println("Start Supermarket Service Consumer - Add Employee");
+		System.out.println("Start Supermarket Service Subscriber");
 		System.out.println();
 
 		System.out.println("================================================");
@@ -61,7 +61,7 @@ while(true) {
 }
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
-		System.out.println("Stop Supermarket Service Consumer - Add Employee");
+		System.out.println("Stop Supermarket Service Consumer");
 		context.ungetService(serviceReference);
 	}
 

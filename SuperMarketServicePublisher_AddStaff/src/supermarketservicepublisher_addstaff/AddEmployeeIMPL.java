@@ -15,8 +15,10 @@ public class AddEmployeeIMPL implements AddEmployeeService{
 		String Address;
 		String NIC;
 		String DOB;
-		double sal;
-		int empage;
+		double sal = 0;
+		int empage = 0;
+		boolean ageValid = true;
+		boolean salValid = true;
 		
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -49,10 +51,29 @@ public class AddEmployeeIMPL implements AddEmployeeService{
 					NIC = in.readLine();
 					System.out.print("Enter employee DOB: ");
 					DOB = in.readLine();
-					System.out.print("Enter employee age: ");
-					empage = Integer.valueOf(in.readLine());
-					System.out.println("Enter employee basic salary: ");
-					sal = Double.valueOf(in.readLine());
+					while(ageValid) {
+						try {
+							System.out.print("Enter employee age: ");
+							empage = Integer.valueOf(in.readLine());
+							ageValid = false;
+						}
+						catch(NumberFormatException e) {
+							ageValid = true;
+							System.out.println("Invalid Age...");
+						}	
+					}
+					
+					while(salValid) {
+						try {
+							System.out.println("Enter employee basic salary: ");
+							sal = Double.valueOf(in.readLine());
+							salValid = false;
+						}
+						catch(NumberFormatException e) {
+							salValid = true;
+							System.out.println("Invalid Salary Value...");
+						}	
+					}
 
 					System.out.println();
 					

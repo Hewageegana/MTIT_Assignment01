@@ -28,7 +28,7 @@ public class Activator implements BundleActivator {
 		serviceReference = context.getServiceReference(AddItemService.class.getName());
 		AddItemService addItems = (AddItemService) context.getService(serviceReference);
 		
-		System.out.println("Start Supermarket Service Subscriber - Add Item");
+		System.out.println("Start Supermarket Service Subscriber");
 		System.out.println();
 
 		System.out.println("================================================");
@@ -67,7 +67,7 @@ public class Activator implements BundleActivator {
 
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
-		System.out.println("Stop Supermarket Service Subscriber - Add Item");
+		System.out.println("Stop Supermarket Service Consumer");
 		context.ungetService(serviceReference);
 	}
 
